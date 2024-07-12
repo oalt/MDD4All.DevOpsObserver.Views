@@ -1,0 +1,21 @@
+﻿.statusUnknown {
+    background-color: lightskyblue;
+}
+
+.statusSuccess {
+    background-color: lightgreen;
+}
+
+.statusFail {
+    background-color: lightcoral;
+}
+
+.statusError {
+    background-color: red;
+}
+
+.card {
+    min-height: 150px;
+    min-width: 300px;
+    padding: 10px;
+}

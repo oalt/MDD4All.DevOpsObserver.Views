@@ -1,0 +1,10 @@
+﻿.horizontal {
+    margin: 0px;
+    padding: 0px;
+}
+
+    .horizontal li {
+        display: inline-block;
+        margin: 10px;
+        padding: 5px;
+    }

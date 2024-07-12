@@ -1,0 +1,13 @@
+﻿@using MDD4All.DevOpsObserver.ViewModels
+<h3>StatusOverview</h3>
+
+<ul class="horizontal">
+    @foreach (StatusViewModel statusViewModel in DataContext.StatusViewModels)
+    {
+
+        <li>
+            <DevOpsStatusCard DataContext="@statusViewModel" />
+        </li>
+
+    }
+</ul>
