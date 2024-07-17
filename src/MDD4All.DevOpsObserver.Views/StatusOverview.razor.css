@@ -1,10 +1,14 @@
-﻿.horizontal {
+﻿.main-title {
+    font-family: cursive; 
+}
+
+.horizontal {
     margin: 0px;
     padding: 0px;
 }
 
     .horizontal li {
         display: inline-block;
-        margin: 10px;
-        padding: 5px;
+        margin: 5px;
+        padding: 0px;
     }

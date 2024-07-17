@@ -1,7 +1,36 @@
 ﻿<span class="@(DataContext.CssClass)">
+    <span>
+        <small>
+            @if (DataContext.Status.GitServerType == "Bitbucket")
+            {
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.77046 5C4.2909 5 3.93123 5.43959 4.01115 5.87919L7.24813 25.7008C7.32806 26.2203 7.76769 26.58 8.2872 26.58H23.9526C24.3123 26.58 24.632 26.3002 24.7119 25.9406L27.9888 5.91915C28.0688 5.43959 27.7091 5.03997 27.2295 5.03997L4.77046 5ZM18.5177 19.3067H13.5223L12.2035 12.2333H19.7565L18.5177 19.3067Z" fill="#7A869A" />
+                    <path d="M26.9099 12.2333H19.7165L18.5177 19.3067H13.5223L7.64771 26.3002C7.64771 26.3002 7.92747 26.54 8.3271 26.54H23.9926C24.3522 26.54 24.6719 26.2602 24.7519 25.9006L26.9099 12.2333Z" fill="url(#paint0_linear)" />
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="28.5953" y1="14.2265" x2="16.6748" y2="23.5316" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.176" stop-color="#344563" />
+                            <stop offset="1" stop-color="#7A869A" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            }
+            else if (DataContext.Status.GitServerType == "Github")
+            {
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                </svg>
+            }
+            &nbsp;@DataContext.Status.GitServerType
+        </small>
+    </span>
     <strong>@DataContext.Status.Alias</strong>
 
     <span class="smallText">
-       
+        @DataContext.Status.WorkflowTitle<br />
+        @if (DataContext.Status.Status != DataModels.DevOpsStatus.Unknown)
+        {
+            @DataContext.Status.BuildTime
+        }
+
     </span>
 </span>
