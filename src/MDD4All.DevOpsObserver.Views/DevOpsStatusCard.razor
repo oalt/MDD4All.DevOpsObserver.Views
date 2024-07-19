@@ -27,7 +27,7 @@
 
     <span class="smallText">
         @DataContext.Status.WorkflowTitle<br />
-        @if (DataContext.Status.Status != DataModels.DevOpsStatus.Unknown)
+        @if (DataContext.Status.StatusValue != DataModels.DevOpsStatus.Unknown)
         {
             @DataContext.Status.BuildTime
         }

@@ -12,3 +12,32 @@
         margin: 5px;
         padding: 0px;
     }
+
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-template-rows: 1fr auto;
+}
+
+.traffic-light-item {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.status-item {
+    grid-column: 2;
+    grid-row: 1;
+    
+}
+
+.results-item {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    margin-top: 20px;
+}
+
+.status-display {
+    margin-top: 30px;
+    color: lightgray;
+}

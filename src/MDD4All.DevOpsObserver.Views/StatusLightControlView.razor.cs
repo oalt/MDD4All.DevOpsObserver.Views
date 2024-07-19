@@ -2,8 +2,6 @@ using MDD4All.DevOpsObserver.DataModels;
 using MDD4All.DevOpsObserver.StatusLightControl.Contracts;
 using MDD4All.DevOpsObserver.ViewModels;
 using Microsoft.AspNetCore.Components;
-using System.Diagnostics;
-using System.Timers;
 
 namespace MDD4All.DevOpsObserver.Views
 {
@@ -28,30 +26,61 @@ namespace MDD4All.DevOpsObserver.Views
 
         private async Task SetLightStateAsync()
         {
-            DevOpsStatus status = DataContext.OverallStatus.Status.Status;
-            
-            if (StatusLightController.CurrentStatus != status)
-            {
-                await StatusLightController.SetStatusLightAsync(status);
+            DevOpsStatus status = DataContext.OverallStatus.Status.StatusValue;
 
-                if (status != DevOpsStatus.Success)
-                {
-                    await StatusLightController.ActivateAlertAsync();
-                }
+            DevOpsStatus controllerStatus = StatusLightController.CurrentStatus;
+
+            await StatusLightController.SetStatusLightAsync(status);
+
+            if (controllerStatus != DevOpsStatus.Unknown &&
+                status != DevOpsStatus.Success)
+            {
+                await StatusLightController.ActivateAlertAsync();
             }
             
-            
+        }
+
+        private async Task CheckLightOnOffState()
+        {
+            DateTime now = DateTime.Now;
+
+            bool onState = false;
+
+            if (now.DayOfWeek == DayOfWeek.Sunday || now.DayOfWeek == DayOfWeek.Saturday)
+            {
+                onState = false;
+            }
+            else
+            {
+                if (now.Hour >= 8 && now.Hour < 17)
+                {
+                    onState = true;
+                }
+            }
+
+            if(onState == true && StatusLightController.IsOn == false)
+            {
+                await StatusLightController.TurnLightOnAsync();
+            }
+            else if(onState == false && StatusLightController.IsOn == true)
+            {
+                await StatusLightController.TurnLightOffAsync();
+            }
         }
 
         private async void OnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            //Debug.WriteLine("PropertyChanged() called." + e.PropertyName);
-
-            if (DataContext.StatusAvailable)
+            await InvokeAsync(async () =>
             {
-                await SetLightStateAsync();
-            }
-            
+                //Debug.WriteLine("PropertyChanged() called." + e.PropertyName);
+
+                if (DataContext.StatusAvailable)
+                {
+                    await CheckLightOnOffState();
+                    await SetLightStateAsync();
+                }
+            });
         }
+
     }
 }

@@ -16,7 +16,7 @@ namespace MDD4All.DevOpsObserver.Views
             {
                 bool result = false;
 
-                if (DataContext.Status.Status == DevOpsStatus.Fail || DataContext.Status.Status == DevOpsStatus.Error)
+                if (DataContext.Status.StatusValue == DevOpsStatus.Fail || DataContext.Status.StatusValue == DevOpsStatus.Error)
                 {
                     result = true;
                 }
@@ -29,7 +29,7 @@ namespace MDD4All.DevOpsObserver.Views
             {
                 bool result = false;
 
-                if (DataContext.Status.Status == DevOpsStatus.Warning)
+                if (DataContext.Status.StatusValue == DevOpsStatus.Warning)
                 {
                     result = true;
                 }
@@ -44,7 +44,7 @@ namespace MDD4All.DevOpsObserver.Views
             {
                 bool result = false;
 
-                if (DataContext.Status.Status == DevOpsStatus.Success || DataContext.Status.Status == DevOpsStatus.Unknown)
+                if (DataContext.Status.StatusValue == DevOpsStatus.Success || DataContext.Status.StatusValue == DevOpsStatus.Unknown)
                 {
                     result = true;
                 }

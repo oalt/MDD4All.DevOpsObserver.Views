@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MDD4All.DevOpsObserver.StatusLightControl.Contracts\src\MDD4All.DevOpsObserver.StatusLightControl.Contracts\MDD4All.DevOpsObserver.StatusLightControl.Contracts-dev.csproj" />
     <ProjectReference Include="..\..\..\MDD4All.DevOpsObserver.ViewModels\src\MDD4All.DevOpsObserver.ViewModels\MDD4All.DevOpsObserver.ViewModels-dev.csproj" />
   </ItemGroup>
 

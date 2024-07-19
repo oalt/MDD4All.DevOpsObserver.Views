@@ -18,7 +18,11 @@ namespace MDD4All.DevOpsObserver.Views
 
         private void OnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            StateHasChanged();
+            InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
+            
         }
     }
 }
