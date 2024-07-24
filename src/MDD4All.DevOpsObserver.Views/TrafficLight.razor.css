@@ -15,15 +15,15 @@
         border-radius: 50%;
     }
 
-div.red.on {
+div.tl-red.on {
     background-color: red;
 }
 
-div.amber.on {
+div.tl-amber.on {
     background-color: orange;
 }
 
-div.green.on {
+div.tl-green.on {
     background-color: green;
 }
 
