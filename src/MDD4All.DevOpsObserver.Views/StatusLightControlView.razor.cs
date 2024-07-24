@@ -46,18 +46,19 @@ namespace MDD4All.DevOpsObserver.Views
 
             bool onState = false;
 
-            if (now.DayOfWeek == DayOfWeek.Sunday || now.DayOfWeek == DayOfWeek.Saturday)
+            if (now.Hour >= DataContext.OnHour && now.Hour < DataContext.OffHour)
             {
-                onState = false;
-            }
-            else
-            {
-                if (now.Hour >= 8 && now.Hour < 17)
-                {
-                    onState = true;
-                }
+                onState = true;
             }
 
+            if (now.DayOfWeek == DayOfWeek.Sunday || now.DayOfWeek == DayOfWeek.Saturday)
+            {
+                if (DataContext.TurnOffOnWeekend)
+                {
+                    onState = false;
+                }
+            }
+            
             if(onState == true && StatusLightController.IsOn == false)
             {
                 await StatusLightController.TurnLightOnAsync();
