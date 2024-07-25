@@ -18,6 +18,22 @@ namespace MDD4All.DevOpsObserver.Views.LCARS
                 {
                     result = "bg-success";
                 }
+                else if (DataContext.Status.StatusValue == DataModels.DevOpsStatus.Warning)
+                {
+                    result = "bg-warning";
+                }
+                else if(DataContext.Status.StatusValue == DataModels.DevOpsStatus.Fail)
+                {
+                    result = "bg-fail";
+                }
+                else if (DataContext.Status.StatusValue == DataModels.DevOpsStatus.Error)
+                {
+                    result = "bg-error";
+                }
+                else if (DataContext.Status.StatusValue == DataModels.DevOpsStatus.Unknown)
+                {
+                    result = "bg-unknown";
+                }
 
                 return result;
             }

@@ -4,7 +4,7 @@
 }
 
     .horizontal li {
-        display: inline-block;
+        display: inline-flex;
         margin: 5px;
         padding: 0px;
     }

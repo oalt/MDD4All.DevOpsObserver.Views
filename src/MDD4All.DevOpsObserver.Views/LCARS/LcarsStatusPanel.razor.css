@@ -1,3 +1,19 @@
 ﻿.bg-success {
     background-color: #33cc99;
 }
+
+.bg-warning {
+    background-color: #ffcc33;
+}
+
+.bg-fail {
+    background-color: #dd4444;
+}
+
+.bg-error {
+    background-color: #ff2200;
+}
+
+.bg-unknown {
+    background-color: #7788ff;
+}

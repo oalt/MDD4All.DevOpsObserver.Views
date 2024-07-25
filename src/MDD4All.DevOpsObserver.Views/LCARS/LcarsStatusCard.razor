@@ -1,7 +1,6 @@
 ﻿<div class="border @(DataContext.CssClass)">
     
-    <span>
-        <small>
+    <span class="smallText">
             @if (DataContext.Status.GitServerType == "Bitbucket")
             {
                 <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,20 +21,19 @@
                 </svg>
             } 
             &nbsp;@DataContext.Status.GitServerType<br/>
-        </small>
     </span>
 
     <span>
     <strong>@DataContext.Status.Alias</strong><br/>
     </span>
 
-    <span>
-    <small>@DataContext.Status.WorkflowTitle<br />
+    <span class="smallText">
+    @DataContext.Status.WorkflowTitle<br />
         @if (DataContext.Status.StatusValue != DataModels.DevOpsStatus.Unknown)
         {
             @DataContext.Status.BuildTime
         }
-    </small>
+    
     </span>
 </div>
 
