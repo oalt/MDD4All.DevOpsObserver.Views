@@ -22,27 +22,12 @@ namespace MDD4All.DevOpsObserver.Views.Pages
         [Inject]
         IStatusLightController StatusLightController { get; set; }
 
-        private static MainViewModel? DataContext { get; set; }
+        [Inject]
+        public MainViewModel DataContext { get; set; }
 
         protected override void OnInitialized()
         {
-            //Debug.WriteLine("OnInitializedCalled in Index.razor");
 
-            DataContext = new MainViewModel(Configuration, HttpClient, DevOpsConfiguration);
-
-            //Timer timer = new System.Threading.Timer((_) =>
-            //{
-
-            //    InvokeAsync(async () =>
-            //    {
-
-            //        Debug.WriteLine("Timer elapsed " + DateTime.Now);
-
-            //        DataContext.RefreshStatusDataAsync();
-
-                    
-            //    });
-            //}, null, 0, 300000);
         }
 
     }

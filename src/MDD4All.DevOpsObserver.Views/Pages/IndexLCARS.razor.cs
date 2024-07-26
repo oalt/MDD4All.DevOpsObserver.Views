@@ -21,17 +21,12 @@ namespace MDD4All.DevOpsObserver.Views.Pages
         [Inject]
         IStatusLightController StatusLightController { get; set; }
 
-        private static MainViewModel? DataContext { get; set; }
+        [Inject]
+        public MainViewModel DataContext { get; set; }
 
         protected override void OnInitialized()
-        {
-          
-            DataContext = new MainViewModel(Configuration, HttpClient, DevOpsConfiguration);
-
-            
+        {           
             DataContext.PropertyChanged += OnPropertyChanged;
-            
-
         }
 
         private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)

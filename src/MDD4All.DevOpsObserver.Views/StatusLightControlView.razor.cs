@@ -26,18 +26,20 @@ namespace MDD4All.DevOpsObserver.Views
 
         private async Task SetLightStateAsync()
         {
-            DevOpsStatus status = DataContext.OverallStatus.Status.StatusValue;
+            DevOpsStatus aggregatedStatus = DataContext.OverallStatus.Status.StatusValue;
 
             DevOpsStatus controllerStatus = StatusLightController.CurrentStatus;
 
-            await StatusLightController.SetStatusLightAsync(status);
+            await StatusLightController.SetStatusLightAsync(aggregatedStatus);
 
-            if (controllerStatus != DevOpsStatus.Unknown &&
-                status != DevOpsStatus.Success)
+            if (aggregatedStatus != controllerStatus)
             {
-                await StatusLightController.ActivateAlertAsync();
-            }
-            
+                if (aggregatedStatus != DevOpsStatus.Success &&
+                    aggregatedStatus != DevOpsStatus.Unknown)
+                {
+                    await StatusLightController.ActivateAlertAsync();
+                }
+            }            
         }
 
         private async Task CheckLightOnOffState()

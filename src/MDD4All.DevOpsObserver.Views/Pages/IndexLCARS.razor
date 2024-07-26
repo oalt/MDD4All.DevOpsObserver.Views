@@ -35,6 +35,9 @@
                         else
                         {
                             <h2>Last refresh: <span class="go-almond-creme">@DataContext.LastDataRefresh</span></h2>
+                            <div class="buttons">
+                                <a class="sky" @onclick="() => DataContext.RefreshStatusCommand.Execute(null)">Refresh</a>
+                            </div>
                         }
                     </div>
                 </div>
@@ -74,7 +77,7 @@
                 @* <div class="panel-5" style="height: 100px;"></div>  *@
                 <div class="panel-6">@DataContext.CurrentTime</div>
                 
-                <div class="panel-7 go-sky"></div>
+                <div class="panel-7 go-sky">@DataContext.AppReleaseVersion</div>
                 <div class="panel-9 go-text">MDD4All.de</div>
             @* <div class="panel-8">08<span class="hop">-47148</span></div>
             <div class="panel-9">09<span class="hop">-081966</span></div> *@
