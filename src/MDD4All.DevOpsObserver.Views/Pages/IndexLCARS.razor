@@ -1,0 +1,120 @@
+﻿@page "/lcars"
+@using MDD4All.DevOpsObserver.Views.LCARS
+
+
+<PageTitle>LCARS DevOps Observer</PageTitle>
+
+@if (DataContext != null)
+{
+    <MDD4All.DevOpsObserver.Views.StatusLightControlView DataContext="DataContext" />
+    <div class="wrap">
+        <div class="scroll-top">
+            <a id="scroll-top" href=""><span class="hop">screen</span>top</a>
+        </div>
+        <div class="left-frame-top">
+            @* <div class="panel-1"><a href="">LCARS</a></div> *@
+            <div class="panel-2">LCARS</div>
+        </div>
+        <div class="right-frame-top">
+            <div class="banner go-orange">
+                DevOps Observer
+                @if(!string.IsNullOrEmpty(DataContext.OrganizationTitle))
+                {
+                    <span class="go-space-white">&#149; </span> <span class="go-gold">@DataContext.OrganizationTitle</span>
+                }
+            </div>
+            
+
+            <div class="headerPanel">
+                <div class="leftHeader">
+                    <div>
+                        @if (DataContext.RefreshingStatus)
+                        {
+                            <h2><span class="go-space-white">Refreshing status...</span></h2>
+                        }
+                        else
+                        {
+                            <h2>Last refresh: <span class="go-almond-creme">@DataContext.LastDataRefresh</span></h2>
+                            <div class="buttons">
+                                <a class="sky" @onclick="() => DataContext.RefreshStatusCommand.Execute(null)">Refresh</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="rightHeader">
+                  
+                    <LcarsResultStatisticView DataContext="DataContext"></LcarsResultStatisticView>
+                    
+                </div>
+            </div>
+
+            <div class="data-cascade-button-group">
+                
+            </div> 
+            <div class="runner">
+                <div class="top-corner-bg">
+                    <div class="top-corner"></div>
+                </div>
+                <div class="block-2"></div>
+                <div class="block-3"></div>
+                <div class="block-4">
+                    <div class="block-4-floatbar"></div>
+                </div>
+            </div>
+            <div class="bar-panel">
+                <div class="bar-1"></div>
+                <div class="bar-2 african-violet"></div>
+                <div class="bar-3"></div>
+                <div class="bar-4"><div class="bar-4-inside"></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap" id="gap">
+        <div class="left-frame">
+            <div>
+                <div class="panel-3"></div>
+                <LcarsStatusPanel DataContext="DataContext.OverallStatus" />
+                @* <div class="panel-5" style="height: 100px;"></div>  *@
+                <div class="panel-6">@DataContext.CurrentTime</div>
+                
+                <div class="panel-7 go-sky"></div>
+                <div class="panel-9 go-text"><span class="go-sky">@DataContext.AppReleaseVersion</span><br />MDD4All.de</div>
+            @* <div class="panel-8">08<span class="hop">-47148</span></div>
+            <div class="panel-9">09<span class="hop">-081966</span></div> *@
+            </div>
+            @*<div>
+        <div class="panel-10">10<span class="hop">-31</span></div>
+        </div>*@
+        </div>
+        <div class="right-frame">
+            <div class="bar-panel">
+                <div class="bar-6"></div>
+                <div class="bar-7"></div>
+                <div class="bar-8 blink"></div>
+                <div class="bar-9"><div class="bar-9-inside"></div></div>
+            </div>
+            <div class="runner">
+                <div class="corner-bg">
+                    <div class="corner"></div>
+                </div>
+                <div class="block-2"></div>
+                <div class="block-3"></div>
+                <div class="block-4b">
+                    <div class="block-4-floatbar"></div>
+                </div>
+            </div>
+            <div class="content">
+
+                <!-- Start your content here. -->
+                <LcarsStatusOverview DataContext="DataContext" />
+
+                <!-- End content area. -->
+            </div>
+        </div>
+    </div>
+  
+    
+
+}
+
+

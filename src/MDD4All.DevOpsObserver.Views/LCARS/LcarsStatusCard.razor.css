@@ -1,0 +1,30 @@
+﻿.statusUnknown {
+    background-color: #7788ff;
+}
+
+.statusSuccess {
+    background-color: #33cc99;
+}
+
+.statusWarning {
+    background-color: #ffcc33;
+}
+
+.statusFail {
+    background-color: #dd4444;
+}
+
+.statusError {
+    background-color: #ff2200;
+}
+
+.smallText {
+    font-size: 0.8Em;
+}
+
+.border {
+    max-width: 350px;
+    min-width:350px;
+    min-height:160px;
+    color: black;
+}

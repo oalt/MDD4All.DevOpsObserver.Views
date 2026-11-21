@@ -1,0 +1,13 @@
+﻿.headerPanel {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    margin: 0 10px 0 25px;
+}
+
+.leftHeader {
+    grid-column-start: 1;
+}
+
+.rightHeader {
+    grid-column-start: 2;
+}
